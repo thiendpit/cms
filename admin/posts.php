@@ -18,45 +18,30 @@
                             <small>Author</small>
                         </h1>
                     
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Author</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Status</th>
-                                    <th>Image</th>
-                                    <th>Tags</th>
-                                    <th>Comments</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <?php 
+                        
+                        if(isset($_GET['source'])) {
+                            $source = $_GET['source'];
+                        } else {
+                            $source = '';
+                        }
 
+                        switch($source) {
+                            case 'add_post':
+                                include_once("../includes/add_post.php");
+                            break;
+                            case '100':
+                                echo 'NICE 100';
+                            break;
+                            case '200':
+                                echo 'NICE 200';
+                            break;
+                            default:
+                                include_once("../includes/view_all_posts.php");
+                            break;
 
-                                <?php 
-                                
-                                $query = "SELECT * FROM posts";
-                                $select_all_post = mysqli_query($conn, $query);
-
-                                while($row = mysqli_fetch_assoc($select_all_post)) {
-                                    
-                                }
-                                ?>
-                                <tr>
-                                    <td>10</td>
-                                    <td>Bootstrap</td>
-                                    <td>Bootstrap ss</td>
-                                    <td>title</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        }
+                        ?>
                         
 
                     </div>
